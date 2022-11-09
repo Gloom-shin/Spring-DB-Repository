@@ -24,6 +24,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * 예외 누수 문제 해결
  * 체크 예외를 런타임 예외로 변경
  * throws SQLException 제거
+ *
+ * SQLExceptionTranslator 추가
+ *
+ * JDBC Template 사용
  */
 @Slf4j
 @SpringBootTest
@@ -49,8 +53,12 @@ class MemberServiceV4Test {
 
         @Bean
         MemberRepository memberRepository(){
-            return new MemberRepositoryV4_2(dataSource);
-        } // 4_1 -> 4_2 로 변경
+
+//            return new MemberRepositoryV4_1(dataSource);//
+//            return new MemberRepositoryV4_2(dataSource);// 4_1 -> 4_2 로 변경
+            return new MemberRepositoryV5(dataSource); // JdbcTemplate 적용
+
+        }
         @Bean
         MemberServiceV4 memberServiceV4(){
             return new MemberServiceV4(memberRepository());
