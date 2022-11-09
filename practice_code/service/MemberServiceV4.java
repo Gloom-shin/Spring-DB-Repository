@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberServiceV4 {
 
 
-    private final MemberRepositoryV4_1 memberRepository;
+    private final MemberRepository memberRepository;
 
     @Transactional
     public void accountTransfer(String fromId, String toId, int money)  {

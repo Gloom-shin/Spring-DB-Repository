@@ -48,9 +48,9 @@ class MemberServiceV4Test {
         }
 
         @Bean
-        MemberRepositoryV4_1 memberRepository(){
-            return new MemberRepositoryV4_1(dataSource);
-        }
+        MemberRepository memberRepository(){
+            return new MemberRepositoryV4_2(dataSource);
+        } // 4_1 -> 4_2 로 변경
         @Bean
         MemberServiceV4 memberServiceV4(){
             return new MemberServiceV4(memberRepository());
